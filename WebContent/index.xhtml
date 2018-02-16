@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form>
+		<p:menubar>
+			<p:menuitem>
+			<p:outputLabel value="Lista de Contatos"></p:outputLabel>
+			</p:menuitem>
+		</p:menubar>
+		<h:form>		 
+		    <p:growl id="growl" life="2000" />
+		    		<p:panelGrid id="form" columns="2">
+		    			<p:outputLabel value="Nome"></p:outputLabel>
+		    			<p:inputText value="#{contatoBean.contato.nome}"></p:inputText>
+		    			<p:outputLabel value="Telefone"></p:outputLabel>
+		    			<p:inputMask mask="(99) 99999-9999" value="#{contatoBean.contato.telefone}"></p:inputMask>
+		    			<p:outputLabel value="E-mail"></p:outputLabel>
+		    			<p:inputText value="#{contatoBean.contato.email}"></p:inputText>
+		    		</p:panelGrid>
+		    		<p:toolbar>
+		    			<p:toolbarGroup>
+			    			<p:commandButton value="Adicionar" actionListener="#{contatoBean.adiciona}" update="table,growl,form"></p:commandButton>
+		  			</p:toolbarGroup>
+		    		</p:toolbar>
+		    		<p:dataTable id="table" value="#{contatoBean.contatos}" var="contato">
+		    			<p:column headerText="Id">
+		    				<h:outputText value="#{contato.id}"></h:outputText>
+		    			</p:column>
+		    			<p:column headerText="Nome">
+		    				<h:outputText value="#{contato.nome}"></h:outputText>
+		    			</p:column>
+		    			<p:column headerText="Telefone">
+		    				<h:outputText value="#{contato.telefone}"></h:outputText>
+		    			</p:column>
+		    			<p:column headerText="E-mail">
+		    				<h:outputText value="#{contato.email}"></h:outputText>
+		    			</p:column>
+		    		</p:dataTable>
+		    
+		</h:form>
+	</h:form>
+</h:body> 
+</html>
